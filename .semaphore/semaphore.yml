@@ -1,0 +1,29 @@
+version: v1.0
+name: "Roots"
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Test
+    task:
+      env_vars:
+        - name: DATABASE_URL
+          value: "ecto://postgres:@0.0.0.0:5432/myapp_test"
+        - name: MIX_ENV
+          value: test
+      jobs:
+        - name: mix test
+          commands:
+            - mix local.rebar --force
+            - checkout
+            - sem-service start postgres 11
+            - sem-version elixir 1.9.1
+            - cache restore
+            - mix deps.get
+            - cache store
+            - mix compile
+            - mix ecto.create
+            - mix ecto.migrate
+            - mix test
