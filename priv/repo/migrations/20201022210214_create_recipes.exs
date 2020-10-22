@@ -6,9 +6,6 @@ defmodule Roots.Repo.Migrations.CreateRecipes do
       add :title, :string
       add :description, :string
       add :instructions, :text
-
-      timestamps()
     end
-
   end
 end

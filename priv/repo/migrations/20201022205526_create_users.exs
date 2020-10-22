@@ -5,9 +5,6 @@ defmodule Roots.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :name, :string
       add :email, :string
-
-      timestamps()
     end
-
   end
 end

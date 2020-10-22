@@ -4,9 +4,7 @@ defmodule Roots.Repo.Migrations.CreateCookbooks do
   def change do
     create table(:cookbooks) do
       add :title, :string
-
-      timestamps()
+      add :author, :string
     end
-
   end
 end

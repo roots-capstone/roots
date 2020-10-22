@@ -4,9 +4,8 @@ defmodule Roots.Repo.Migrations.CreateIngredients do
   def change do
     create table(:ingredients) do
       add :name, :string
-
-      timestamps()
+      add :amount, :float
+      add :unit, :string
     end
-
   end
 end
