@@ -1,5 +1,5 @@
 version: v1.0
-name: "Test MyApp"
+name: "Roots"
 agent:
   machine:
     type: e1-standard-2
@@ -16,6 +16,7 @@ blocks:
       jobs:
         - name: mix test
           commands:
+            - mix local.rebar --force
             - checkout
             - sem-service start postgres 11
             - sem-version elixir 1.9.1
