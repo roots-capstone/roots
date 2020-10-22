@@ -9,6 +9,5 @@ defmodule Roots.Repo.Migrations.CreateRecipes do
 
       timestamps()
     end
-
   end
 end
