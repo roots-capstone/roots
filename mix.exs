@@ -38,9 +38,9 @@ defmodule Roots.MixProject do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:absinthe_ecto, "~> 0.1.0"},
-      {:absinthe_plug, "~> 1.3.0"},
-      {:cowboy, "~> 1.0"}
+      {:jason, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:absinthe, "~> 1.0.0"}
     ]
   end
 
