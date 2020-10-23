@@ -16,6 +16,6 @@ defmodule Roots.Recipe do
   def changeset(recipe, attrs) do
     recipe
     |> cast(attrs, [:title, :description, :instructions])
-    |> validate_required([:title, :description, :instructions])
+    |> validate_required([:title, :instructions])
   end
 end
