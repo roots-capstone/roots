@@ -6,6 +6,7 @@ defmodule Roots.Ingredient do
     field :amount, :float
     field :name, :string
     field :unit, :string
+    belongs_to :recipe, Roots.Recipe
 
     timestamps()
   end
