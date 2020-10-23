@@ -6,6 +6,8 @@ defmodule Roots.Recipe do
     field :description, :string
     field :instructions, :string
     field :title, :string
+    has_many :ingredients, Roots.Ingredient
+    belongs_to :cookbook, Roots.Cookbook
 
     timestamps()
   end
