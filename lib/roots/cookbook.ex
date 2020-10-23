@@ -5,6 +5,8 @@ defmodule Roots.Cookbook do
   schema "cookbooks" do
     field :author, :string
     field :title, :string
+    has_many :recipes, Roots.Recipe
+    belongs_to :user, Roots.User
 
     timestamps()
   end
