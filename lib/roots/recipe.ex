@@ -6,6 +6,7 @@ defmodule Roots.Recipe do
     field :description, :string
     field :instructions, :string
     field :title, :string
+    field :author, :string
     has_many :ingredients, Roots.Ingredient
     belongs_to :cookbook, Roots.Cookbook
 
@@ -16,6 +17,6 @@ defmodule Roots.Recipe do
   def changeset(recipe, attrs) do
     recipe
     |> cast(attrs, [:title, :description, :instructions])
-    |> validate_required([:title, :instructions])
+    |> validate_required([:title, :instructions, :author])
   end
 end
