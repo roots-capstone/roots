@@ -6,17 +6,16 @@ defmodule Roots.Application do
   use Application
 
   def start(_type, _args) do
+    # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       Roots.Repo,
-      # Start the Telemetry supervisor
-      RootsWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: Roots.PubSub},
-      # Start the Endpoint (http/https)
-      RootsWeb.Endpoint
-      # Start a worker by calling: Roots.Worker.start_link(arg)
-      # {Roots.Worker, arg}
+      # Start the endpoint when the application starts
+      RootsWeb.Endpoint,
+      # Start Absinthe subscriptions
+      {Absinthe.Subscription, [RootsWeb.Endpoint]}
+      # Starts a worker by calling: Roots.Worker.start_link(arg)
+      # {Roots.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

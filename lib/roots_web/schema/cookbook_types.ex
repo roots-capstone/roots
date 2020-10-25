@@ -1,6 +1,6 @@
 defmodule RootsWeb.Schema.CookbookTypes do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: Roots.Repo
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1, dataloader: 3]
 
   alias RootsWeb.Resolvers
 
@@ -10,7 +10,7 @@ defmodule RootsWeb.Schema.CookbookTypes do
     field :id, :id
     field :author, :string
     field :title, :string
-    field :recipes, list_of(:recipes)
-    field :user, :user
+    field :recipes, list_of(:recipe), resolve: dataloader(Data)
+    field :user, :user, resolve: dataloader(Data)
   end
 end

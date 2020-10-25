@@ -15,7 +15,7 @@ config :roots, RootsWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "iqeVUC1bB6WRINZbrqOKfjd2Kc3PvsJ9/Fy/ink4YUat08EYZhE1kJ2j8IvxKPHQ",
   render_errors: [view: RootsWeb.ErrorView, accepts: ~w(json), layout: false],
-  pubsub_server: Roots.PubSub,
+  pubsub: [name: Roots.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "FNLYJkTG"]
 
 # Configures Elixir's Logger

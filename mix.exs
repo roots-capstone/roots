@@ -33,17 +33,30 @@ defmodule Roots.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.6"},
-      {:phoenix_ecto, "~> 4.1"},
-      {:ecto_sql, "~> 3.4"},
+      {:phoenix, "~> 1.4.0"},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:absinthe, "~> 1.0.0"}
+      {:cors_plug, "~> 2.0"},
+      {:guardian, "~> 1.0"},
+      {:absinthe, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4.0"},
+      {:absinthe_plug, "~> 1.4"},
+      {:dataloader, "~> 1.0.0"},
+      {:poison, "~> 2.1.0"},
+      {:quantum, "~> 2.3"},
+      {:timex, "~> 3.0"},
+      {:new_relic_agent, "~> 1.0"},
+      {:new_relic_absinthe, "~> 0.0.2"},
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_machina, "~> 2.3", only: :test},
+      {:ex_spec, "~> 2.0", only: :test},
+      {:faker, "~> 0.7", only: :test},
+      {:junit_formatter, "~> 3.0", only: [:test]}
     ]
   end
 

@@ -1,11 +1,11 @@
-defmodule Roots.Schema do
+defmodule RootsWeb.Schema do
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
 
-  import_types(RootsWeb.Schema.UserType)
-  import_types(RootsWeb.Schema.CookbookType)
-  import_types(RootsWeb.Schema.RecipeType)
-  import_types(RootsWeb.Schema.IngredientType)
+  import_types(RootsWeb.Schema.UserTypes)
+  import_types(RootsWeb.Schema.CookbookTypes)
+  import_types(RootsWeb.Schema.RecipeTypes)
+  import_types(RootsWeb.Schema.IngredientTypes)
 
   query do
     import_fields(:user_queries, :cookbook_queries, :recipe_queries, :ingredient_queries)
