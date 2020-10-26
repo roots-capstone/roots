@@ -1,5 +1,5 @@
 defmodule Roots.Model do
-  alias Roots.Model
+  alias Roots.Repo
 
   defmacro __using__(_) do
     quote do
