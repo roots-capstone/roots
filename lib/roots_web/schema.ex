@@ -10,7 +10,6 @@ defmodule RootsWeb.Schema do
   # ...other models' types added here
 
   query do
-    import_fields(:user_queries)
     import_fields(:cookbook_queries)
     # ... other models' queries added here
   end
@@ -30,9 +29,5 @@ defmodule RootsWeb.Schema do
 
   def plugins do
     [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
-  end
-
-  def middleware(middleware, _field, _object) do
-    [NewRelic.Absinthe.Middleware] ++ middleware
   end
 end
