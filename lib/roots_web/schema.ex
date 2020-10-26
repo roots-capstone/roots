@@ -6,10 +6,12 @@ defmodule RootsWeb.Schema do
   import_types(Absinthe.Type.Custom)
 
   import_types(RootsWeb.Schema.UserTypes)
+  import_types(RootsWeb.Schema.CookbookTypes)
   # ...other models' types added here
 
   query do
     import_fields(:user_queries)
+    import_fields(:cookbook_queries)
     # ... other models' queries added here
   end
 
