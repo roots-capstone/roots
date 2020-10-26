@@ -1,6 +1,6 @@
 defmodule RootsWeb.Schema.UserTypes do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: Roots.Repo
+
   import Absinthe.Resolution.Helpers, only: [dataloader: 1]
 
   alias RootsWeb.{Data, Resolvers}
@@ -11,9 +11,7 @@ defmodule RootsWeb.Schema.UserTypes do
     field :name, :string
     field :email, :string
 
-    field :user, :user, resolve: assoc(:user)
-
-    field :cookbooks, list_of(:cookbook), resolve: dataloader(Data)
+    # field :cookbooks, list_of(:cookbook), resolve: dataloader(Data)
   end
 
   object :user_queries do
