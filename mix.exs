@@ -43,7 +43,10 @@ defmodule Roots.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:absinthe, "~> 1.0.0"}
+      {:absinthe, "~> 1.5.0"},
+      {:absinthe_phoenix, "~> 2.0.0"},
+      {:absinthe_plug, "~> 1.5.0"},
+      {:guardian, "~> 1.0"},
     ]
   end
 
