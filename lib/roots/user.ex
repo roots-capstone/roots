@@ -7,7 +7,7 @@ defmodule Roots.User do
   schema "users" do
     field :email, :string
     field :name, :string
-    has_many :cookbooks, Roots.Cookbook
+    has_many :cookbooks, Cookbook
 
     timestamps()
   end
