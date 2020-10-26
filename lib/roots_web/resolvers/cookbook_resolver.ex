@@ -1,5 +1,5 @@
 defmodule RootsWeb.Resolvers.CookbookResolver do
-  alias Roots.Post
+  alias Roots.Cookbook
 
   def list(_parent, _args, _resolutions) do
     {:ok, Cookbook.all()}

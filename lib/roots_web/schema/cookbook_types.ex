@@ -6,13 +6,13 @@ defmodule RootsWeb.Schema.CookbookTypes do
   alias RootsWeb.{Data, Resolvers}
 
   @desc "Cookbook"
-  object :user do
+  object :cookbook do
     field :id, :id
     field :author, :string
     field :title, :string
 
     field :user, :user, resolve: dataloader(Data)
-    field :recipes, list_of(:recipe), resolve: dataloader(Data)
+    # field :recipes, list_of(:recipe), resolve: dataloader(Data)
   end
 
   object :cookbook_queries do
@@ -28,7 +28,7 @@ defmodule RootsWeb.Schema.CookbookTypes do
     end
   end
 
-  # object :user_mutations do
+  # object :cookbook_mutations do
   #
   # end
 end
