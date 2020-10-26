@@ -13,14 +13,6 @@ defmodule Roots.User do
     timestamps()
   end
 
-  def search(serach_term, current_user) do
-    Repo.all(
-      from u in __MODULE__,
-        where: ilike(u.name, ^("%" <> serach_term <> "%")) and u.id != ^current_user.id,
-        limit: 25
-    )
-  end
-
   @doc false
   def changeset(user, attrs) do
     user

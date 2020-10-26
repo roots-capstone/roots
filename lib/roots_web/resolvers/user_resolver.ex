@@ -1,13 +1,17 @@
 defmodule RootsWeb.Resolvers.UserResolver do
   alias Roots.User
 
-  def createUser(_parent, args, _resolutions) do
-    args
-    |> User.create()
-    |> case do
+  def create_user(_parent, args, _resolution) do
+
+    case User.create(args) do
       {:ok, user} ->
-      {:error, 'Unable to create new user'}
-        # {:error, extract_error_msg(changeset)}
+        {:ok, user}
+        _error ->
+        {:error, "Could not create user"}
+    # |> case do
+    #   {:ok, user} ->
+    #   {:error, 'Unable to create new user'}
+    #     # {:error, extract_error_msg(changeset)}
     end
   end
 end
