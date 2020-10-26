@@ -17,11 +17,11 @@ defmodule RootsWeb.Schema.UserTypes do
   object :user_mutations do
 
     @desc "Create User"
-    field :create_user, :user do
+    field :createUser, :user do
       arg(:name, non_null(:string))
       arg(:email, non_null(:string))
 
-      resolve(&Resolvers.UserResolver.create_user/3)
+      resolve(&Resolvers.UserResolver.createUser/3)
     end
   end
 end
