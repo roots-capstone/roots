@@ -47,6 +47,7 @@ defmodule Roots.MixProject do
       {:absinthe_phoenix, "~> 2.0.0"},
       {:absinthe_plug, "~> 1.5.0"},
       {:guardian, "~> 1.0"},
+      {:dataloader, "~> 1.0.0"}
     ]
   end
 
