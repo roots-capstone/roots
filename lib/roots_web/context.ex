@@ -1,5 +1,5 @@
 defmodule RootsWeb.Context do
-  @behavior Plug
+  @behaviour Plug
 
   import Plug.Conn
 
