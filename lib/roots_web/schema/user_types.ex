@@ -11,7 +11,7 @@ defmodule RootsWeb.Schema.UserTypes do
     field :name, :string
     field :email, :string
 
-    # field :cookbooks, list_of(:cookbook), resolve: dataloader(Data)
+    field :cookbooks, list_of(:cookbook), resolve: dataloader(Data)
   end
 
   object :user_queries do
