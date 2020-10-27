@@ -1,5 +1,5 @@
 defmodule Roots.UserTest do
-  user Roots.ConnCase
+  use Roots.ConnCase
 
   alias Roots.User
 
