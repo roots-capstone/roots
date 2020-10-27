@@ -9,6 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
 alias Roots.Repo
 
 user_data = [
@@ -76,6 +77,7 @@ Enum.each(cookbook_data, fn(data) ->
   Repo.insert!(%Roots.Cookbook{title: data.title, author: data.author, user: data.user})
 end)
 
+
 michaelAlex = Repo.insert!(%Roots.User{name: "Michael Alex", email: "user_michaelAlex@roots.com"})
 cookbook_1 = Repo.insert!(%Roots.Cookbook{title: "Michael Alex's Cookbook", author: "Michael Alex", user: michaelAlex})
 
@@ -106,3 +108,4 @@ recipe_data = [
 Enum.each(recipe_data, fn(data) ->
   Repo.insert!(%Roots.Recipe{description: data.description, instructions: data.instructions, title: data.title, author: data.author, cookbook: data.cookbook})
 end)
+
