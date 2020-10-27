@@ -17,13 +17,13 @@ defmodule RootsWeb.Schema.CookbookTypes do
 
   object :cookbook_queries do
     @desc "Get specific cookbook"
-    field :cookbook, :cookbook do
+    field :get_cookbook, :cookbook do
       arg(:id, non_null(:id))
       resolve(&Resolvers.CookbookResolver.show/3)
     end
 
     @desc "Get all cookbooks"
-    field :cookbooks, list_of(:cookbook) do
+    field :get_cookbooks, list_of(:cookbook) do
       resolve(&Resolvers.CookbookResolver.list/3)
     end
   end
