@@ -12,7 +12,7 @@ defmodule Roots.Factory do
     %Roots.Cookbook{
       title: Faker.Industry.En.sub_sector(),
       author: Faker.Name.name(),
-      host: build(:user)
+      user: build(:user)
     }
   end
 end
