@@ -9,10 +9,6 @@ defmodule RootsWeb.Resolvers.UserResolver do
         {:ok, user}
         _error ->
         {:error, "Could not create user"}
-    # |> case do
-    #   {:ok, user} ->
-    #   {:error, 'Unable to create new user'}
-    #     # {:error, extract_error_msg(changeset)}
     end
   end
 end
