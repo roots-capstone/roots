@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :roots, Roots.Repo,
-  username: "michaelalexlynch",
+  username: "postgres",
   password: "postgres",
   database: "roots_dev",
   hostname: "localhost",
