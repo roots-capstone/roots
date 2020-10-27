@@ -7,10 +7,13 @@ defmodule RootsWeb.Schema do
 
   import_types(RootsWeb.Schema.UserTypes)
   import_types(RootsWeb.Schema.CookbookTypes)
+  import_types(RootsWeb.Schema.RecipeTypes)
+
   # ...other models' types added here
 
   query do
     import_fields(:cookbook_queries)
+    import_fields(:recipe_queries)
     # ... other models' queries added here
   end
 
