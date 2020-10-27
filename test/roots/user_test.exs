@@ -1,40 +1,26 @@
 defmodule Roots.UserTest do
-  use Roots.ConnCase
+  use RootsWeb.ConnCase
 
   alias Roots.User
+  alias Roots.Repo
 
 
   @valid_attrs %{name: "User Name", email: "user@roots.com"}
 
   describe "#create" do
-    it "can create a new user" do
+    test "can create a new user" do
       {:ok, user} = User.create(@valid_attrs)
-      assert user.name == "User Name 1"
+      assert user.name == "User Name"
     end
   end
 
   describe "#find" do
-    it "finds user" do
-      user = insert(:user, name: "User Name 2")
+    test "finds user" do
+      user = Repo.insert!(%Roots.User{name: "User", email: "user@roots.com"})
       found = User.find(user.id)
       assert found.id == user.id
-    end
-  end
-
-  describe "#changeset" do
-    it "valitdates with correct attributes" do
-      changeset = User.changeset(%User{}, @valid_attrs)
-      assert changeset.valid?
-    end
-
-    it "does not valitdate with invalid email format" do
-      changeset =
-        User.changeset(
-          %User{},
-          Map.put(@valid_attrs, :email, "invalid_email@roots.com")
-        )
-
-      refute changeset.valid?
+      assert found.name == user.name
+      assert found.email == user.email
     end
   end
 end
