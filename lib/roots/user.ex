@@ -3,7 +3,6 @@ defmodule Roots.User do
 
   alias Roots.{Repo, Cookbook}
 
-
   schema "users" do
     field :email, :string
     field :name, :string

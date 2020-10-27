@@ -14,7 +14,7 @@ defmodule RootsWeb.Schema.RecipeTypes do
     field :author, :string
 
     field :cookbook, :cookbook, resolve: dataloader(Data)
-    field :ingredients, list_of(:ingredient), resolve: dataloader(Data)
+    # field :ingredients, list_of(:ingredient), resolve: dataloader(Data)
   end
 
   object :recipe_mutations do
@@ -24,6 +24,7 @@ defmodule RootsWeb.Schema.RecipeTypes do
       arg(:instructions, non_null(:string))
       arg(:title, non_null(:string))
       arg(:author, non_null(:string))
+      arg(:cookbook, non_null(:integer))
 
       resolve &Resolvers.RecipeResolver.create_recipe/3
     end

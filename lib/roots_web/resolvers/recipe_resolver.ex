@@ -7,7 +7,7 @@ defmodule RootsWeb.Resolvers.RecipeResolver do
       {:ok, recipe} ->
         {:ok, recipe}
         _error ->
-        {:error, "Could not create user"}
+        {:error, "Could not create recipe"}
     end
   end
 end

@@ -2,12 +2,16 @@ defmodule Roots.Recipe do
   use Ecto.Schema
   import Ecto.Changeset
 
+  use Roots.Model
+
+  alias Roots.Repo
+
   schema "recipes" do
     field :description, :string
     field :instructions, :string
     field :title, :string
     field :author, :string
-    has_many :ingredients, Roots.Ingredient
+    # has_many :ingredients, Roots.Ingredient
     belongs_to :cookbook, Roots.Cookbook
 
     timestamps()

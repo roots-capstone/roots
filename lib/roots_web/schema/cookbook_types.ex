@@ -12,7 +12,6 @@ defmodule RootsWeb.Schema.CookbookTypes do
     field :title, :string
 
     field :user, :user, resolve: dataloader(Data)
-    # field :recipes, list_of(:recipe), resolve: dataloader(Data)
   end
 
   object :cookbook_queries do
@@ -27,8 +26,4 @@ defmodule RootsWeb.Schema.CookbookTypes do
       resolve(&Resolvers.CookbookResolver.show/3)
     end
   end
-
-  # object :cookbook_mutations do
-  #
-  # end
 end
