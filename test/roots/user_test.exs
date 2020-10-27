@@ -11,6 +11,7 @@ defmodule Roots.UserTest do
     test "can create a new user" do
       {:ok, user} = User.create(@valid_attrs)
       assert user.name == "User Name"
+      assert user.email == "user@roots.com"
     end
   end
 
