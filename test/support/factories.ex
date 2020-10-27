@@ -1,11 +1,9 @@
 defmodule Roots.Factory do
-  user ExMachina.Ecto, repo: Roots.Repo
-
-  use ExMachina
+  use ExMachina.Ecto, repo: Roots.Repo
 
   def user_factory do
     %Roots.User{
-      name: Faker.Name.name(),
+      name: Faker.Person.name(),
       email: Faker.Internet.email()
     }
   end
@@ -13,8 +11,8 @@ defmodule Roots.Factory do
   def cookbook_user do
     %Roots.Cookbook{
       title: Faker.Industry.En.sub_sector(),
-      author: Faker.Name.name(),
-      host: build(:user)
+      author: Faker.Person.name(),
+      user: build(:user)
     }
   end
 end
