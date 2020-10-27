@@ -1,6 +1,6 @@
-defmodule Roots.Recipe do
-  use Ecto.Schema
-  import Ecto.Changeset
+defmodule Roots.Recipe do  
+  use Roots.Model
+  alias Roots.{Repo, Recipe}
 
   schema "recipes" do
     field :description, :string
