@@ -43,6 +43,36 @@ Enum.each(user_data, fn(data) ->
   Repo.insert!(%Roots.User{name: data.name, email: data.email})
 end)
 
-user = Repo.insert!(%Roots.User{name: "User", email: "user@roots.com"})
+ryan = Repo.insert!(%Roots.User{name: "Ryan", email: "user_ryan@roots.com"})
 
-Repo.insert!(%Roots.Cookbook{title: "My Cookbook", author: "Ryan", user: user})
+cookbook_data = [
+  %{
+    title: "Ryan's Cookbook",
+    author: "ryan@roots.com",
+    user: ryan
+  },
+  %{
+    title: "Persian Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "Mexican Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "Japanese Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "My Favorite Food",
+    author: "Ryan Laleh",
+    user: ryan
+  }
+]
+
+Enum.each(cookbook_data, fn(data) ->
+  Repo.insert!(%Roots.Cookbook{title: data.title, author: data.author, user: data.user})
+end)
