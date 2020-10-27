@@ -12,9 +12,6 @@ defmodule RootsWeb.Resolvers.UserResolver do
   end
 
   def cookbook_list(_parent, args, _resolution) do
-    case User.find(args[:id]) do
-      nil -> {:error, "Not found"}
-      user -> {:ok, User.cookbooks()}
-    end
+    {:ok, User.get_cookbooks(args.id)}
   end
 end
