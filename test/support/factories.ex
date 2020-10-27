@@ -1,7 +1,5 @@
 defmodule Roots.Factory do
-  user ExMachina.Ecto, repo: Roots.Repo
-
-  use ExMachina
+  use ExMachina.Ecto, repo: Roots.Repo
 
   def user_factory do
     %Roots.User{
