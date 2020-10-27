@@ -45,4 +45,40 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
       assert List.last(cookbooks)["id"] == to_string(usersCookbook.id)
     end
   end
+
+  describe "#show" do
+    test "it returns specific cookbook" do
+      user = Repo.insert!(%Roots.User{
+        name: "User",
+        email: "user@roots.com"
+      })
+      usersCookbook = Repo.insert!(%Roots.Cookbook{
+        title: "User's Cookbook",
+        author: "Author Name",
+        user: user
+      })
+      persianFood = Repo.insert!(%Roots.Cookbook{
+        title: "Persion Food",
+        author: "Author Name",
+        user: user
+      })
+
+      query = """
+      {
+        getCookbook(id: #{persianFood.id}) {
+          id
+          title
+          author
+        }
+      }
+      """
+
+      res =
+        build_conn()
+        |> post("/graphql", AbsintheHelpers.query_skeleton(query, "getCookbook"))
+
+      cookbook_found = json_response(res, 200)["data"]["getCookbook"]
+      assert cookbook_found["id"] == to_string(persianFood.id)
+    end
+  end
 end
