@@ -26,7 +26,7 @@ defmodule RootsWeb.Schema.RecipeTypes do
       arg(:author, non_null(:string))
       arg(:cookbook_id, non_null(:id))
 
-      resolve(&Resolvers.RecipeResolver.create_recipe/3)
+      resolve &Resolvers.RecipeResolver.create_recipe/3
     end
   end
 
