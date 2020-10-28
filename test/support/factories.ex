@@ -3,7 +3,7 @@ defmodule Roots.Factory do
 
   def user_factory do
     %Roots.User{
-      name: Faker.Name.name(),
+      name: Faker.Person.name(),
       email: Faker.Internet.email()
     }
   end
@@ -11,7 +11,7 @@ defmodule Roots.Factory do
   def cookbook_user do
     %Roots.Cookbook{
       title: Faker.Industry.En.sub_sector(),
-      author: Faker.Name.name(),
+      author: Faker.Person.name(),
       user: build(:user)
     }
   end

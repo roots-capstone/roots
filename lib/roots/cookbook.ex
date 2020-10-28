@@ -1,7 +1,7 @@
 defmodule Roots.Cookbook do
   use Roots.Model
 
-  alias Roots.{Repo, Recipe}
+  alias Roots.{Repo}
 
 
   schema "cookbooks" do
