@@ -52,11 +52,6 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         name: "User",
         email: "user@roots.com"
       })
-      usersCookbook = Repo.insert!(%Roots.Cookbook{
-        title: "User's Cookbook",
-        author: "Author Name",
-        user: user
-      })
       persianFood = Repo.insert!(%Roots.Cookbook{
         title: "Persion Food",
         author: "Author Name",
@@ -79,6 +74,28 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
 
       cookbook_found = json_response(res, 200)["data"]["getCookbook"]
       assert cookbook_found["id"] == to_string(persianFood.id)
+    end
+  end
+
+  describe "#create" do
+    test "it can create a cookbook (without a user)" do
+      mutation = """
+      {
+        createCookbook(title: "New Cookbook", author: "User's Name") {
+          title
+          author
+        }
+      }
+      """
+
+      res =
+        build_conn()
+        |> post("/graphql", AbsintheHelpers.mutation_skeleton(mutation))
+
+      new_cookbook = json_response(res, 200)["data"]["createCookbook"]
+      IEx.pry
+      assert new_cookbook["title"] == "New Cookbook"
+      assert new_cookbook["author"] == "User's Name"
     end
   end
 end

@@ -19,6 +19,7 @@ defmodule RootsWeb.Schema do
 
   mutation do
     import_fields(:user_mutations)
+    import_fields(:cookbook_mutations)
     # ... other models' mutations added here
   end
 
