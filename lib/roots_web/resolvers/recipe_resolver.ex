@@ -1,5 +1,4 @@
 defmodule RootsWeb.Resolvers.RecipeResolver do
-  # import Ecto.Query
   alias Roots.Recipe
 
   def create_recipe(_parent, args, _resolution) do
