@@ -2,7 +2,9 @@ defmodule RootsWeb.Resolvers.UserResolver do
   alias Roots.User
 
   def create_user(_parent, args, _resolution) do
-    case User.create(args) do
+    args
+    |> User.create()
+    |> case do
       {:ok, user} ->
         {:ok, user}
 

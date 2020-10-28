@@ -1,6 +1,6 @@
 defmodule Roots.Recipe do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Roots.Model
+  alias Roots.{Repo, Recipe}
 
   schema "recipes" do
     field :description, :string
@@ -11,6 +11,10 @@ defmodule Roots.Recipe do
     belongs_to :cookbook, Roots.Cookbook
 
     timestamps()
+  end
+
+  def all do
+    Repo.all(from row in __MODULE__, order_by: [desc: row.id])
   end
 
   @doc false

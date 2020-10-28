@@ -1,17 +1,23 @@
 defmodule Roots.Cookbook do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Roots.Model
+
+  alias Roots.{Repo, Recipe}
+
 
   schema "cookbooks" do
     field :author, :string
     field :title, :string
-    has_many :recipes, Roots.Recipe
+
     belongs_to :user, Roots.User
+    has_many :recipes, Roots.Recipe
 
     timestamps()
   end
 
-  @doc false
+  def all do
+    Repo.all(from row in __MODULE__, order_by: [desc: row.id])
+  end
+
   def changeset(cookbook, attrs) do
     cookbook
     |> cast(attrs, [:title, :author])
