@@ -10,7 +10,6 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-
 ## TO CLEAR OUT THE DATABASE SO THERE ARE NO DUPLICATES
 ## AND THEN SEED THE DATABASE
 ## RUN  $ mix ecto.reset
@@ -18,6 +17,28 @@
 alias Roots.Repo
 alias Repo.{User, Cookbook}
 
+user_data = [
+  %{
+    name: "michaelAlex",
+    email: "michaelAlex@roots.com"
+  },
+  %{
+    name: "Jessye",
+    email: "jesseye@roots.com"
+  },
+  %{
+    name: "Tyler",
+    email: "tyler@roots.com"
+  },
+  %{
+    name: "Horacio",
+    email: "horacio@roots.com"
+  }
+]
+
+Enum.each(user_data, fn data ->
+  Repo.insert!(%Roots.User{name: data.name, email: data.email})
+end)
 
 ryan = Repo.insert!(%Roots.User{
   name: "Ryan",
@@ -43,7 +64,6 @@ horacio = Repo.insert!(%Roots.User{
   name: "Horacio",
   email: "horacio@roots.com"
 })
-
 
 Repo.insert!(%Roots.Cookbook{
   title: "Ryan's Cookbook",
@@ -75,3 +95,47 @@ Repo.insert!(%Roots.Cookbook{
   author: "Horacio",
   user: horacio
 })
+
+neeru = Repo.insert!(%Roots.User{name: "Neeru", email: "neeram85@gmail.com"})
+
+cookbook_data = [
+  %{
+    title: "Ryan's Cookbook",
+    author: "ryan@roots.com",
+    user: ryan
+  },
+  %{
+    title: "Neeru's Cookbook",
+    author: "Neeru",
+    user: neeru
+  },
+  %{
+    title: "Persian Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "Mexican Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "Japanese Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "My Favorite Food",
+    author: "Ryan Laleh",
+    user: ryan
+  },
+  %{
+    title: "Indian Food",
+    author: "Neeru",
+    user: neeru
+  }
+]
+
+Enum.each(cookbook_data, fn data ->
+  Repo.insert!(%Roots.Cookbook{title: data.title, author: data.author, user: data.user})
+end)

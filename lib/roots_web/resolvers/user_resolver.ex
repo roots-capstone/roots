@@ -7,12 +7,13 @@ defmodule RootsWeb.Resolvers.UserResolver do
     |> case do
       {:ok, user} ->
         {:ok, user}
-        _error ->
+
+      _error ->
         {:error, "Could not create user"}
-    # |> case do
-    #   {:ok, user} ->
-    #   {:error, 'Unable to create new user'}
-    #     # {:error, extract_error_msg(changeset)}
     end
+  end
+
+  def cookbook_list(_parent, args, _resolution) do
+    {:ok, User.get_cookbooks(args.id)}
   end
 end
