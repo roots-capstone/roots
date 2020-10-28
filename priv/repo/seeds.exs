@@ -15,31 +15,8 @@
 ## RUN  $ mix ecto.reset
 
 alias Roots.Repo
-alias Repo.{User, Cookbook}
 
-user_data = [
-  %{
-    name: "michaelAlex",
-    email: "michaelAlex@roots.com"
-  },
-  %{
-    name: "Jessye",
-    email: "jesseye@roots.com"
-  },
-  %{
-    name: "Tyler",
-    email: "tyler@roots.com"
-  },
-  %{
-    name: "Horacio",
-    email: "horacio@roots.com"
-  }
-]
-
-Enum.each(user_data, fn data ->
-  Repo.insert!(%Roots.User{name: data.name, email: data.email})
-end)
-
+# USERS
 ryan = Repo.insert!(%Roots.User{
   name: "Ryan",
   email: "ryan@roots.com"
@@ -65,77 +42,63 @@ horacio = Repo.insert!(%Roots.User{
   email: "horacio@roots.com"
 })
 
-Repo.insert!(%Roots.Cookbook{
-  title: "Ryan's Cookbook",
-  author: "Ryan",
-  user: ryan
-})
-Repo.insert!(%Roots.Cookbook{
+# COOKBOOKS
+neerus_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "Neeru's Cookbook",
   author: "Neeru",
   user: neeru
 })
-Repo.insert!(%Roots.Cookbook{
+indian_food = Repo.insert!(%Roots.Cookbook{
+  title: "Indian Food",
+  author: "Neeru",
+  user: neeru
+})
+ryans_cookbook = Repo.insert!(%Roots.Cookbook{
+  title: "Ryan's Cookbook",
+  author: "Ryan",
+  user: ryan
+})
+michael_alexs_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "MichaelAlex's Cookbook",
   author: "MichaelAlex",
   user: michaelAlex
 })
-Repo.insert!(%Roots.Cookbook{
+jessyes_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "Jessye's Cookbook",
   author: "Jessye",
   user: jessye
 })
-Repo.insert!(%Roots.Cookbook{
+tylers_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "Tyler's Cookbook",
   author: "Tyler",
   user: tyler
 })
-Repo.insert!(%Roots.Cookbook{
+horacios_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "Horacio's Cookbook",
   author: "Horacio",
   user: horacio
 })
 
-neeru = Repo.insert!(%Roots.User{name: "Neeru", email: "neeram85@gmail.com"})
 
-cookbook_data = [
-  %{
-    title: "Ryan's Cookbook",
-    author: "ryan@roots.com",
-    user: ryan
-  },
-  %{
-    title: "Neeru's Cookbook",
-    author: "Neeru",
-    user: neeru
-  },
-  %{
-    title: "Persian Food",
-    author: "Ryan Laleh",
-    user: ryan
-  },
-  %{
-    title: "Mexican Food",
-    author: "Ryan Laleh",
-    user: ryan
-  },
-  %{
-    title: "Japanese Food",
-    author: "Ryan Laleh",
-    user: ryan
-  },
-  %{
-    title: "My Favorite Food",
-    author: "Ryan Laleh",
-    user: ryan
-  },
-  %{
-    title: "Indian Food",
-    author: "Neeru",
-    user: neeru
-  }
-]
-
-Enum.each(cookbook_data, fn data ->
-  Repo.insert!(%Roots.Cookbook{title: data.title, author: data.author, user: data.user})
-end)
+# RECIPES
+beed_potato_stew = Repo.insert!(%Roots.Recipe{
+   description: "A hearty beef anmd potato stew",
+   instructions: "Cook in a crockpot",
+   title: "Campfire Stew",
+   author: "Michael Alex",
+   cookbook: michael_alexs_cookbook
+})
+baked_chicken = Repo.insert!(%Roots.Recipe{
+   description: "Lemon=garlic baked chicken cooked with potatoes",
+   instructions: "Bake at 375F",
+   title: "Greek Chicken and Potatoes",
+   author: "Michael Alex",
+   cookbook: michael_alexs_cookbook
+})
+french_dish = Repo.insert!(%Roots.Recipe{
+   description: "A classic French dish",
+   instructions: "Cook the beef and carrots in red wine",
+   title: "Beef Bourguinon",
+   author: "Michael Alex",
+   cookbook: michael_alexs_cookbook
+})
