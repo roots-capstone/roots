@@ -26,5 +26,6 @@ defmodule Roots.Recipe do
     recipe
     |> cast(attrs, [:title, :description, :instructions])
     |> validate_required([:title, :instructions, :author])
+    |> cast_assoc(:cookbook)
   end
 end
