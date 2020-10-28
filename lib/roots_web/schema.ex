@@ -12,6 +12,7 @@ defmodule RootsWeb.Schema do
 
   query do
     import_fields(:cookbook_queries)
+    import_fields(:user_queries)
     import_fields(:recipe_queries)
     # ... other models' queries added here
   end

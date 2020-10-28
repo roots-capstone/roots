@@ -1,7 +1,7 @@
 defmodule Roots.User do
   use Roots.Model
 
-  alias Roots.{Repo, Cookbook}
+  alias Roots.{Cookbook}
 
   schema "users" do
     field :email, :string
@@ -10,6 +10,15 @@ defmodule Roots.User do
     has_many :cookbooks, Cookbook
 
     timestamps()
+  end
+
+  def get_cookbooks(id) do
+    query =
+      from c in Cookbook,
+        where: c.user_id == ^id,
+        preload: :user
+
+    Repo.all(query)
   end
 
   @doc false
