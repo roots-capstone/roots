@@ -16,5 +16,6 @@ defmodule Roots.Ingredient do
     ingredient
     |> cast(attrs, [:name, :amount, :unit])
     |> validate_required([:name, :amount, :unit])
+    |> cast_assoc(:recipe)
   end
 end
