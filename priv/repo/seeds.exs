@@ -31,9 +31,9 @@ michaelAlex = Repo.insert!(%Roots.User{
   name: "michaelAlex",
   email: "michaelAlex@roots.com"
 })
-jesseye = Repo.insert!(%Roots.User{
-  name: "Jesseye",
-  email: "jesseye@roots.com"
+jessye = Repo.insert!(%Roots.User{
+  name: "Jessye",
+  email: "jessye@roots.com"
 })
 tyler = Repo.insert!(%Roots.User{
   name: "Tyler",
@@ -61,9 +61,9 @@ Repo.insert!(%Roots.Cookbook{
   user: michaelAlex
 })
 Repo.insert!(%Roots.Cookbook{
-  title: "Jesseye's Cookbook",
-  author: "Jesseye",
-  user: jesseye
+  title: "Jessye's Cookbook",
+  author: "Jessye",
+  user: jessye
 })
 Repo.insert!(%Roots.Cookbook{
   title: "Tyler's Cookbook",
