@@ -11,7 +11,7 @@ defmodule Roots.Recipe do
     field :instructions, :string
     field :title, :string
     field :author, :string
-    # has_many :ingredients, Roots.Ingredient
+    has_many :ingredients, Roots.Ingredient
     belongs_to :cookbook, Roots.Cookbook
 
     timestamps()
@@ -25,7 +25,7 @@ defmodule Roots.Recipe do
   def changeset(recipe, attrs) do
     recipe
     |> cast(attrs, [:title, :description, :instructions, :author])
-    |> validate_required([:title, :instructions, :author])
+    |> validate_required([:title, :description, :instructions, :author])
     |> cast_assoc(:cookbook)
   end
 end

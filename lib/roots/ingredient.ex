@@ -3,8 +3,8 @@ defmodule Roots.Ingredient do
   import Ecto.Changeset
 
   schema "ingredients" do
-    field :amount, :float
     field :name, :string
+    field :amount, :float
     field :unit, :string
     belongs_to :recipe, Roots.Recipe
 

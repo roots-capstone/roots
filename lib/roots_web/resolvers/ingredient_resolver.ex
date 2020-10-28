@@ -1,8 +1,8 @@
 defmodule RootsWeb.Resolvers.IngredientResolver do
   alias Roots.Ingredient
 
-  def create_recipe(_parent, args, _resolution) do
-
+  def create_ingredient(_parent, args, _resolution) do
+    IO.inspect(Ingredient.create(args), label: "potato")
     args
     |> Ingredient.create()
     |> case do
