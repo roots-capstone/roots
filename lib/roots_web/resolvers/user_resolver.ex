@@ -1,5 +1,5 @@
 defmodule RootsWeb.Resolvers.UserResolver do
-  alias Roots.User
+  alias Roots.{Repo, Cookbook, User}
 
   def create_user(_parent, args, _resolution) do
     args
