@@ -14,19 +14,11 @@ alias Roots.Repo
 
 user_data = [
   %{
-    name: "Ryan",
-    email: "ryan@roots.com"
-  },
-  %{
-    name: "Neeru",
-    email: "neeru@roots.com"
-  },
-  %{
     name: "michaelAlex",
     email: "michaelAlex@roots.com"
   },
   %{
-    name: "Jesseye",
+    name: "Jessye",
     email: "jesseye@roots.com"
   },
   %{
@@ -45,11 +37,18 @@ end)
 
 ryan = Repo.insert!(%Roots.User{name: "Ryan", email: "user_ryan@roots.com"})
 
+neeru = Repo.insert!(%Roots.User{name: "Neeru", email: "neeram85@gmail.com"})
+
 cookbook_data = [
   %{
     title: "Ryan's Cookbook",
     author: "ryan@roots.com",
     user: ryan
+  },
+  %{
+    title: "Neeru's Cookbook",
+    author: "Neeru",
+    user: neeru
   },
   %{
     title: "Persian Food",
@@ -70,6 +69,11 @@ cookbook_data = [
     title: "My Favorite Food",
     author: "Ryan Laleh",
     user: ryan
+  },
+  %{
+    title: "Indian Food",
+    author: "Neeru",
+    user: neeru
   }
 ]
 

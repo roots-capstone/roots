@@ -14,12 +14,9 @@ defmodule Roots.User do
 
   def get_cookbooks(id) do
     query =
-      from(
-        c in Cookbook,
+      from c in Cookbook,
         where: c.user_id == ^id,
-        select: c,
-        preload: [:cookbooks]
-      )
+        preload: :user
 
     Repo.all(query)
   end
