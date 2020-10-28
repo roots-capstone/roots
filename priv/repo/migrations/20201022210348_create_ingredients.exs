@@ -6,7 +6,7 @@ defmodule Roots.Repo.Migrations.CreateIngredients do
       add :name, :string
       add :amount, :float
       add :unit, :string
-      
+
       timestamps()
     end
   end

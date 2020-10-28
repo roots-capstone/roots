@@ -1,5 +1,4 @@
 defmodule Roots.AbsintheHelpers do
-
   def query_skeleton(query, query_name) do
     %{
       "operationName" => "#{query_name}",

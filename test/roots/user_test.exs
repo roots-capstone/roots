@@ -4,7 +4,6 @@ defmodule Roots.UserTest do
   alias Roots.User
   alias Roots.Repo
 
-
   @valid_attrs %{name: "User Name", email: "user@roots.com"}
 
   describe "#create" do

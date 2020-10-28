@@ -24,7 +24,7 @@ defmodule Roots.Recipe do
   @doc false
   def changeset(recipe, attrs) do
     recipe
-    |> cast(attrs, [:title, :description, :instructions])
+    |> cast(attrs, [:title, :description, :instructions, :author])
     |> validate_required([:title, :instructions, :author])
     |> cast_assoc(:cookbook)
   end

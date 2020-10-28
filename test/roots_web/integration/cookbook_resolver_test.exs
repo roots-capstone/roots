@@ -6,20 +6,25 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
 
   describe "#list" do
     test "it returns cookbooks" do
-      user = Repo.insert!(%Roots.User{
-        name: "User",
-        email: "user@roots.com"
-      })
-      usersCookbook = Repo.insert!(%Roots.Cookbook{
-        title: "User's Cookbook",
-        author: "Author Name",
-        user: user
-      })
-      persianFood = Repo.insert!(%Roots.Cookbook{
-        title: "Persion Food",
-        author: "Author Name",
-        user: user
-      })
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+
+      usersCookbook =
+        Repo.insert!(%Roots.Cookbook{
+          title: "User's Cookbook",
+          author: "Author Name",
+          user: user
+        })
+
+      persianFood =
+        Repo.insert!(%Roots.Cookbook{
+          title: "Persion Food",
+          author: "Author Name",
+          user: user
+        })
 
       query = """
       {
@@ -48,20 +53,25 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
 
   describe "#show" do
     test "it returns specific cookbook" do
-      user = Repo.insert!(%Roots.User{
-        name: "User",
-        email: "user@roots.com"
-      })
-      usersCookbook = Repo.insert!(%Roots.Cookbook{
-        title: "User's Cookbook",
-        author: "Author Name",
-        user: user
-      })
-      persianFood = Repo.insert!(%Roots.Cookbook{
-        title: "Persion Food",
-        author: "Author Name",
-        user: user
-      })
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+
+      usersCookbook =
+        Repo.insert!(%Roots.Cookbook{
+          title: "User's Cookbook",
+          author: "Author Name",
+          user: user
+        })
+
+      persianFood =
+        Repo.insert!(%Roots.Cookbook{
+          title: "Persion Food",
+          author: "Author Name",
+          user: user
+        })
 
       query = """
       {

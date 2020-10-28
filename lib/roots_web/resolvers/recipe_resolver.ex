@@ -4,7 +4,9 @@ defmodule RootsWeb.Resolvers.RecipeResolver do
 
   def create_recipe(_parent, args, _resolution) do
 
-    case Recipe.create(args) do
+    args
+    |> Recipe.create()
+    |> case do
       {:ok, recipe} ->
         {:ok, recipe}
         _error ->

@@ -3,7 +3,6 @@ defmodule Roots.Cookbook do
 
   alias Roots.{Repo}
 
-
   schema "cookbooks" do
     field :author, :string
     field :title, :string
