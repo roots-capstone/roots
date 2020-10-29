@@ -1,10 +1,8 @@
 defmodule Roots.Recipe do
   use Roots.Model
+  
   alias Roots.{Repo, Recipe}
 
-  use Roots.Model
-
-  alias Roots.Repo
 
   schema "recipes" do
     field :description, :string
