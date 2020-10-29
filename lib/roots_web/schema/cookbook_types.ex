@@ -27,4 +27,13 @@ defmodule RootsWeb.Schema.CookbookTypes do
       resolve(&Resolvers.CookbookResolver.list/3)
     end
   end
+
+  object :cookbook_mutations do
+    @desc "Create a new cookbook"
+    field :create_cookbook, type: :cookbook do
+      arg(:title, non_null(:string))
+      arg(:author, non_null(:string))
+      resolve(&Resolvers.CookbookResolver.create_cookbook/3)
+    end
+  end
 end

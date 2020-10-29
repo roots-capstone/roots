@@ -53,4 +53,14 @@ defmodule RootsWeb.CookbookResolverTest do
       assert found.id == persianFood.id
     end
   end
+
+  describe "#create" do
+    test "it creates a valid cookbook without user" do
+      args = %{title: "My cookbook", author: "User's Name"}
+      {:ok, cookbook} =
+        CookbookResolver.create_cookbook(nil, args, nil)
+      assert cookbook.title == "My cookbook"
+      assert cookbook.author == "User's Name"
+    end
+  end
 end
