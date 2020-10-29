@@ -1,6 +1,8 @@
 defmodule Roots.Recipe do
   use Roots.Model
+  
   alias Roots.{Repo, Recipe}
+
 
   schema "recipes" do
     field :description, :string
@@ -20,7 +22,8 @@ defmodule Roots.Recipe do
   @doc false
   def changeset(recipe, attrs) do
     recipe
-    |> cast(attrs, [:title, :description, :instructions])
-    |> validate_required([:title, :instructions, :author])
+    |> cast(attrs, [:title, :description, :instructions, :author])
+    |> validate_required([:title, :description, :instructions, :author])
+    |> cast_assoc(:cookbook)
   end
 end
