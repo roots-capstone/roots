@@ -1,16 +1,20 @@
 defmodule Roots.Ingredient do
   use Roots.Model
 
-  alias Roots.{Repo, Ingredient}
+  alias Roots.{Repo, Recipe}
 
 
   schema "ingredients" do
     field :name, :string
     field :amount, :float
     field :unit, :string
-    belongs_to :recipe, Roots.Recipe
+    belongs_to :recipe, Recipe
 
     timestamps()
+  end
+
+  def all do
+    Repo.all(from row in __MODULE__, order_by: [desc: row.id])
   end
 
   @doc false
