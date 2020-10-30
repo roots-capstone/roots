@@ -18,6 +18,7 @@ defmodule Roots.Ingredient do
     ingredient
     |> cast(attrs, [:name, :amount, :unit, :recipe_id])
     |> validate_required([:name, :amount, :unit, :recipe_id])
+    |> foreign_key_constraint(:recipe_id)
     |> cast_assoc(:recipe)
   end
 end

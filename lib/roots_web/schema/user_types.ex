@@ -18,6 +18,7 @@ defmodule RootsWeb.Schema.UserTypes do
     @desc "Get cookbooks"
     field :get_user_cookbooks, list_of(:cookbook) do
       arg(:id, non_null(:id))
+
       resolve(&Resolvers.UserResolver.cookbook_list/3)
     end
   end
