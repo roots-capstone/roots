@@ -77,14 +77,6 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
            author: "User Name",
            cookbook_id: usersCookbook.id
         })
-      baked_chicken =
-        Repo.insert!(%Roots.Recipe{
-           description: "Lemon=garlic baked chicken cooked with potatoes",
-           instructions: "Bake at 375F",
-           title: "Greek Chicken and Potatoes",
-           author: "User Name",
-           cookbook_id: usersCookbook.id
-        })
       french_dish =
         Repo.insert!(%Roots.Recipe{
            description: "A classic French dish",

@@ -56,7 +56,7 @@ defmodule RootsWeb.CookbookResolverTest do
   end
 
   describe "#create" do
-    test "it creates a valid cookbook without user" do
+    test "it creates a valid cookbook" do
       user =
         Repo.insert!(%Roots.User{
           name: "User",
@@ -66,8 +66,8 @@ defmodule RootsWeb.CookbookResolverTest do
       args = %{title: "My cookbook", author: "User's Name", user_id: user.id}
       {:ok, cookbook} =
         CookbookResolver.create_cookbook(nil, args, nil)
-      assert cookbook.title == "My cookbook"
-      assert cookbook.author == "User's Name"
+      assert cookbook.title == args.title
+      assert cookbook.author == args.author
       assert cookbook.user_id == user.id
     end
   end
