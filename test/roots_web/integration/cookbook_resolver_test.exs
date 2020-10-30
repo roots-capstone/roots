@@ -4,6 +4,7 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
   alias Roots.Repo
   require IEx
 
+
   describe "#list" do
     test "it returns cookbooks" do
       user =
@@ -98,6 +99,10 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         createCookbook(title: "New Cookbook", author: "User's Name", user_id: #{user.id}) {
           title
           author
+          user {
+            id
+            name
+          }
         }
       }
       """
@@ -107,9 +112,11 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         |> post("/graphql", AbsintheHelpers.mutation_skeleton(mutation))
 
       new_cookbook = json_response(res, 200)["data"]["createCookbook"]
-      IEx.pry
+
       assert new_cookbook["title"] == "New Cookbook"
       assert new_cookbook["author"] == "User's Name"
+      assert new_cookbook["user"]["id"] == Integer.to_string(user.id)
+      assert new_cookbook["user"]["name"] == user.name
     end
   end
 end

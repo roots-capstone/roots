@@ -17,14 +17,14 @@ defmodule RootsWeb.CookbookResolverTest do
         Repo.insert!(%Roots.Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
-          user: user
+          user_id: user.id
       })
 
       persianFood =
         Repo.insert!(%Roots.Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user_id: user.id
       })
 
       {:ok, results} = CookbookResolver.list(nil, nil, nil)
@@ -46,11 +46,12 @@ defmodule RootsWeb.CookbookResolverTest do
         Repo.insert!(%Roots.Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user_id: user.id
         })
 
       {:ok, found} = CookbookResolver.show(nil, %{id: persianFood.id}, nil)
       assert found.id == persianFood.id
+      assert found.user_id == user.id
     end
   end
 
@@ -67,6 +68,7 @@ defmodule RootsWeb.CookbookResolverTest do
         CookbookResolver.create_cookbook(nil, args, nil)
       assert cookbook.title == "My cookbook"
       assert cookbook.author == "User's Name"
+      assert cookbook.user_id == user.id
     end
   end
 end
