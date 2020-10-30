@@ -5,11 +5,17 @@ defmodule Roots.CookbookTest do
   alias Roots.Cookbook
   alias Roots.Repo
 
-  @valid_attrs %{title: "Cookbook Name", author: "User Name"}
 
   describe "#create" do
     test "it can create a new cookbook" do
-      {:ok, cookbook} = Cookbook.create(@valid_attrs)
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+      valid_attrs = %{title: "Cookbook Name", author: "User Name", user_id: user.id}
+
+      {:ok, cookbook} = Cookbook.create(valid_attrs)
       assert cookbook.title == "Cookbook Name"
       assert cookbook.author == "User Name"
     end

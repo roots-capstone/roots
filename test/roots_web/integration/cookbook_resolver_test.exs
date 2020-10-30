@@ -16,14 +16,14 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         Repo.insert!(%Roots.Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
-          user: user
+          user_id: user.id
         })
 
       persianFood =
         Repo.insert!(%Roots.Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user_id: user.id
         })
 
       query = """
@@ -59,25 +59,12 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
           email: "user@roots.com"
         })
 
-      usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
-          title: "User's Cookbook",
-          author: "Author Name",
-          user: user
-        })
-
       persianFood =
         Repo.insert!(%Roots.Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user: user
         })
-
-      persianFood = Repo.insert!(%Roots.Cookbook{
-        title: "Persion Food",
-        author: "Author Name",
-        user: user
-      })
 
       query = """
       {
@@ -99,10 +86,16 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
   end
 
   describe "#create" do
-    test "it can create a cookbook (without a user)" do
+    test "it can create a cookbook" do
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+
       mutation = """
       {
-        createCookbook(title: "New Cookbook", author: "User's Name") {
+        createCookbook(title: "New Cookbook", author: "User's Name", user_id: #{user.id}) {
           title
           author
         }
