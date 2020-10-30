@@ -55,4 +55,119 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
       assert new_recipe["cookbook"]["author"] == usersCookbook.author
     end
   end
+
+  describe "#list" do
+    test "it returns a list of recipes" do
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+      usersCookbook =
+        Repo.insert!(%Roots.Cookbook{
+          title: "User's Cookbook",
+          author: "Author Name",
+          user_id: user.id
+        })
+      beef_potato_stew =
+        Repo.insert!(%Roots.Recipe{
+           description: "A hearty beef anmd potato stew",
+           instructions: "Cook in a crockpot",
+           title: "Campfire Stew",
+           author: "User Name",
+           cookbook_id: usersCookbook.id
+        })
+      baked_chicken =
+        Repo.insert!(%Roots.Recipe{
+           description: "Lemon=garlic baked chicken cooked with potatoes",
+           instructions: "Bake at 375F",
+           title: "Greek Chicken and Potatoes",
+           author: "User Name",
+           cookbook_id: usersCookbook.id
+        })
+      french_dish =
+        Repo.insert!(%Roots.Recipe{
+           description: "A classic French dish",
+           instructions: "Cook the beef and carrots in red wine",
+           title: "Beef Bourguinon",
+           author: "User Name",
+           cookbook_id: usersCookbook.id
+        })
+
+      query = """
+      {
+        getRecipes {
+          id
+          title
+          author
+          description
+          instructions
+        }
+      }
+      """
+
+      res =
+        build_conn()
+        |> post("/graphql", AbsintheHelpers.query_skeleton(query, "getRecipes"))
+
+      recipes = json_response(res, 200)["data"]["getRecipes"]
+      assert List.first(recipes)["id"] == to_string(french_dish.id)
+      assert List.last(recipes)["id"] == to_string(beef_potato_stew.id)
+    end
+  end
+
+  describe "#show" do
+    test "it can return a recipe and the cookbook/user it belongs to" do
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
+      usersCookbook =
+        Repo.insert!(%Roots.Cookbook{
+          title: "User's Cookbook",
+          author: "Author Name",
+          user_id: user.id
+        })
+      beef_potato_stew =
+        Repo.insert!(%Roots.Recipe{
+           description: "A hearty beef anmd potato stew",
+           instructions: "Cook in a crockpot",
+           title: "Campfire Stew",
+           author: "User Name",
+           cookbook_id: usersCookbook.id
+        })
+
+      query = """
+      {
+        getRecipe(id: #{beef_potato_stew.id}) {
+          id
+          title
+          author
+          description
+          instructions
+          cookbook {
+            id
+            title
+            author
+            user {
+              id
+              name
+              email
+            }
+          }
+        }
+      }
+      """
+
+      res =
+        build_conn()
+        |>post("/graphql", AbsintheHelpers.query_skeleton(query, "getRecipe"))
+
+      recipe_found = json_response(res, 200)["data"]["getRecipe"]
+      assert recipe_found["id"] == to_string(beef_potato_stew.id)
+      assert recipe_found["cookbook"]["id"] == to_string(usersCookbook.id)
+      assert recipe_found["cookbook"]["user"]["id"] == to_string(user.id)
+    end
+  end
 end
