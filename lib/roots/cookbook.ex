@@ -19,7 +19,9 @@ defmodule Roots.Cookbook do
 
   def changeset(cookbook, attrs) do
     cookbook
-    |> cast(attrs, [:title, :author])
-    |> validate_required([:title, :author])
+    |> cast(attrs, [:title, :author, :user_id])
+    |> validate_required([:title, :author, :user_id])
+    |> foreign_key_constraint(:user_id)
+    |> cast_assoc(:user)
   end
 end

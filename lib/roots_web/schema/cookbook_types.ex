@@ -19,11 +19,13 @@ defmodule RootsWeb.Schema.CookbookTypes do
     @desc "Get specific cookbook"
     field :get_cookbook, :cookbook do
       arg(:id, non_null(:id))
+      
       resolve(&Resolvers.CookbookResolver.show/3)
     end
 
     @desc "Get all cookbooks"
     field :get_cookbooks, list_of(:cookbook) do
+
       resolve(&Resolvers.CookbookResolver.list/3)
     end
   end
@@ -33,6 +35,8 @@ defmodule RootsWeb.Schema.CookbookTypes do
     field :create_cookbook, type: :cookbook do
       arg(:title, non_null(:string))
       arg(:author, non_null(:string))
+      arg(:user_id, non_null(:id))
+
       resolve(&Resolvers.CookbookResolver.create_cookbook/3)
     end
   end
