@@ -10,6 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :roots, RootsWeb.Endpoint,
+  http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "glacial-falls-21490.herokuapp.com", port: 443],
   server: true,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
