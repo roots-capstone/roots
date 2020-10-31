@@ -1,19 +1,19 @@
 defmodule RootsWeb.Integration.RecipeResolverTest do
   use RootsWeb.ConnCase
   alias Roots.AbsintheHelpers
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook, Recipe}
   require IEx
 
 
   describe "#create" do
     test "it can create a new recipe" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
@@ -59,18 +59,18 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
   describe "#list" do
     test "it returns a list of recipes" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       beef_potato_stew =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",
@@ -78,7 +78,7 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
            cookbook_id: usersCookbook.id
         })
       french_dish =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A classic French dish",
            instructions: "Cook the beef and carrots in red wine",
            title: "Beef Bourguinon",
@@ -111,18 +111,18 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
   describe "#show" do
     test "it can return a recipe and the cookbook/user it belongs to" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       beef_potato_stew =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",

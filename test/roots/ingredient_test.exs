@@ -3,24 +3,24 @@ defmodule Roots.IngredientTest do
   require IEx
 
   alias Roots.Ingredient
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook, Recipe, Ingredient}
 
 
   describe "#create" do
     test "it can create a new ingredient" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       recipe =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
           title: "User's Recipe",
           author: "Author Name",
           description: "Recipe description",
@@ -45,18 +45,18 @@ defmodule Roots.IngredientTest do
   describe "#all" do
     test "it finds all recipes" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       recipe =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",
@@ -64,14 +64,14 @@ defmodule Roots.IngredientTest do
            cookbook_id: usersCookbook.id
         })
       ingredient1 =
-        Repo.insert!(%Roots.Ingredient{
+        Repo.insert!(%Ingredient{
            name: "Ingredient name",
            amount: 2.0,
            unit: "oz",
            recipe_id: recipe.id
         })
       ingredient2 =
-        Repo.insert!(%Roots.Ingredient{
+        Repo.insert!(%Ingredient{
            name: "Ingredient name",
            amount: 2.0,
            unit: "oz",
@@ -88,18 +88,18 @@ defmodule Roots.IngredientTest do
   describe "#find" do
     test "it can find a cookbook by id" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       recipe =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",
@@ -107,7 +107,7 @@ defmodule Roots.IngredientTest do
            cookbook_id: usersCookbook.id
         })
       ingredient =
-        Repo.insert!(%Roots.Ingredient{
+        Repo.insert!(%Ingredient{
            name: "Ingredient name",
            amount: 2.0,
            unit: "oz",

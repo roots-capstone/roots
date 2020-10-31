@@ -1,25 +1,25 @@
 defmodule RootsWeb.Integration.IngredientResolverTest do
   use RootsWeb.ConnCase
   alias Roots.AbsintheHelpers
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook, Recipe}
   require IEx
 
 
   describe "#create" do
     test "it can create a new ingredient" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       recipe =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
           title: "Chicken Salad",
           description: "Really tasty",
           instructions: "step 1, step 2",

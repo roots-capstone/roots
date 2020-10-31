@@ -3,17 +3,17 @@ defmodule RootsWeb.RecipeResolverTest do
   require IEx
 
   alias RootsWeb.Resolvers.RecipeResolver
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook, Recipe}
 
   describe "#create" do
     test "it creates a valid recipe" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
@@ -39,18 +39,18 @@ defmodule RootsWeb.RecipeResolverTest do
   describe "#list" do
     test "it can return a list of recipes" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       beef_potato_stew =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",
@@ -58,7 +58,7 @@ defmodule RootsWeb.RecipeResolverTest do
            cookbook_id: usersCookbook.id
         })
       baked_chicken =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "Lemon=garlic baked chicken cooked with potatoes",
            instructions: "Bake at 375F",
            title: "Greek Chicken and Potatoes",
@@ -66,7 +66,7 @@ defmodule RootsWeb.RecipeResolverTest do
            cookbook_id: usersCookbook.id
         })
       french_dish =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A classic French dish",
            instructions: "Cook the beef and carrots in red wine",
            title: "Beef Bourguinon",
@@ -84,18 +84,18 @@ defmodule RootsWeb.RecipeResolverTest do
   describe "#show" do
     test "it can return a specific recipe" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
       beef_potato_stew =
-        Repo.insert!(%Roots.Recipe{
+        Repo.insert!(%Recipe{
            description: "A hearty beef anmd potato stew",
            instructions: "Cook in a crockpot",
            title: "Campfire Stew",

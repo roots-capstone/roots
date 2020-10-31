@@ -3,25 +3,25 @@ defmodule RootsWeb.CookbookResolverTest do
   require IEx
 
   alias RootsWeb.Resolvers.CookbookResolver
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook}
 
   describe "#list" do
     test "returns cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
       })
 
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
       })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user_id: user.id
@@ -37,13 +37,13 @@ defmodule RootsWeb.CookbookResolverTest do
   describe "#show" do
     test "returns specific cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user_id: user.id
@@ -58,7 +58,7 @@ defmodule RootsWeb.CookbookResolverTest do
   describe "#create" do
     test "it creates a valid cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
