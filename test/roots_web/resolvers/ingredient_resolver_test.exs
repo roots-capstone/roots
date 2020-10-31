@@ -7,12 +7,18 @@ defmodule RootsWeb.IngredientResolverTest do
 
   describe "#create" do
     test "it creates an ingredient on a recipe" do
+      user =
+        Repo.insert!(%Roots.User{
+          name: "User",
+          email: "user@roots.com"
+        })
       usersCookbook =
         Repo.insert!(%Roots.Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
+          user_id: user.id
       })
-      recipe_1 =
+      recipe =
         Repo.insert!(%Roots.Recipe{
           title: "Chicken Salad",
           description: "Really tasty",
@@ -21,20 +27,18 @@ defmodule RootsWeb.IngredientResolverTest do
           cookbook_id: usersCookbook.id
       })
 
+      args = %{
+        recipe_id: recipe.id,
+        name: "Chicken",
+        amount: 0.5,
+        unit: "lb"
+      }
       {:ok, ingredient} =
-        IngredientResolver.create_ingredient(
-          nil,%{
-            recipe_id: recipe_1.id,
-            name: "Chicken",
-            amount: 0.5,
-            unit: "lb"},
-          nil
-        )
-
-      assert ingredient.name == "Chicken"
+        IngredientResolver.create_ingredient(nil, args, nil)
+      assert ingredient.name == args.name
       assert ingredient.amount == 0.5
-      assert ingredient.unit == "lb"
-      assert ingredient.recipe_id == recipe_1.id
+      assert ingredient.unit == args.unit
+      assert ingredient.recipe_id == recipe.id
     end
   end
 end

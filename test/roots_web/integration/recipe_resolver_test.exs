@@ -37,7 +37,7 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
               title
               author
             }
-        }
+          }
       }
       """
 
