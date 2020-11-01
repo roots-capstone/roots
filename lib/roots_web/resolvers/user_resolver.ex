@@ -16,4 +16,8 @@ defmodule RootsWeb.Resolvers.UserResolver do
   def cookbook_list(_parent, args, _resolution) do
     {:ok, User.get_cookbooks(args.id)}
   end
+
+  def show(_parent, args, _resolution) do
+    {:ok, User.find(args.id)}
+  end
 end
