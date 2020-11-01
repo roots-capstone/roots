@@ -107,7 +107,6 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         |> post("/graphql", AbsintheHelpers.mutation_skeleton(mutation))
 
       new_cookbook = json_response(res, 200)["data"]["createCookbook"]
-      IEx.pry
       assert new_cookbook["title"] == "New Cookbook"
       assert new_cookbook["author"] == "User's Name"
     end
