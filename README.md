@@ -329,3 +329,13 @@ See the [open issues](https://github.com/roots-capstone/roots-interface/issues) 
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+  
+  
+[contributors-shield]: https://img.shields.io/github/contributors/roots-capstone/roots.svg?style=flat-square
+[contributors-url]: https://github.com/roots-capstone/roots/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/roots-capstone/roots.svg?style=flat-square
+[forks-url]: https://github.com/roots-capstone/roots/network/members
+[stars-shield]: https://img.shields.io/github/stars/roots-capstone/roots.svg?style=flat-square
+[stars-url]: https://github.com/roots-capstone/roots/stargazers
+[issues-shield]: https://img.shields.io/github/issues/roots-capstone/roots.svg?style=flat-square
+[issues-url]: https://github.com/roots-capstone/roots/issues
