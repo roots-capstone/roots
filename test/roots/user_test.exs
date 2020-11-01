@@ -16,7 +16,7 @@ defmodule Roots.UserTest do
 
   describe "#find" do
     test "finds user" do
-      user = Repo.insert!(%Roots.User{name: "User", email: "user@roots.com"})
+      user = Repo.insert!(%User{name: "User", email: "user@roots.com"})
       found = User.find(user.id)
       assert found.id == user.id
       assert found.name == user.name

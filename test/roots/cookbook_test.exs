@@ -3,13 +3,13 @@ defmodule Roots.CookbookTest do
   require IEx
 
   alias Roots.Cookbook
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook}
 
 
   describe "#create" do
     test "it can create a new cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
@@ -24,20 +24,20 @@ defmodule Roots.CookbookTest do
   describe "#all" do
     test "it finds all cookbooks" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user: user
         })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user: user
@@ -53,13 +53,13 @@ defmodule Roots.CookbookTest do
   describe "#find" do
     test "it can find a cookbook by id" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user: user
