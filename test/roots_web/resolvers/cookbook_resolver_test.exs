@@ -3,28 +3,28 @@ defmodule RootsWeb.CookbookResolverTest do
   require IEx
 
   alias RootsWeb.Resolvers.CookbookResolver
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook}
 
   describe "#list" do
     test "returns cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
       })
 
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
-          user: user
+          user_id: user.id
       })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user_id: user.id
       })
 
       {:ok, results} = CookbookResolver.list(nil, nil, nil)
@@ -37,27 +37,28 @@ defmodule RootsWeb.CookbookResolverTest do
   describe "#show" do
     test "returns specific cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user_id: user.id
         })
 
       {:ok, found} = CookbookResolver.show(nil, %{id: persianFood.id}, nil)
       assert found.id == persianFood.id
+      assert found.user_id == user.id
     end
   end
 
   describe "#create" do
-    test "it creates a valid cookbook without user" do
+    test "it creates a valid cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
@@ -65,8 +66,9 @@ defmodule RootsWeb.CookbookResolverTest do
       args = %{title: "My cookbook", author: "User's Name", user_id: user.id}
       {:ok, cookbook} =
         CookbookResolver.create_cookbook(nil, args, nil)
-      assert cookbook.title == "My cookbook"
-      assert cookbook.author == "User's Name"
+      assert cookbook.title == args.title
+      assert cookbook.author == args.author
+      assert cookbook.user_id == user.id
     end
   end
 end

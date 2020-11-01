@@ -50,7 +50,8 @@ defmodule Roots.MixProject do
       {:dataloader, "~> 1.0.0"},
       {:faker, "~> 0.7", only: :test},
       {:ex_machina, "~> 2.4", only: :test},
-      {:ex_spec, "~> 2.0.1", only: :test}
+      {:ex_spec, "~> 2.0.1", only: :test},
+      {:cors_plug, "~> 1.5"}
     ]
   end
 

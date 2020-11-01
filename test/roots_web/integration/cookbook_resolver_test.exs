@@ -1,26 +1,27 @@
 defmodule RootsWeb.Integration.CookbookResolverTest do
   use RootsWeb.ConnCase
   alias Roots.AbsintheHelpers
-  alias Roots.Repo
+  alias Roots.{Repo, User, Cookbook}
   require IEx
+
 
   describe "#list" do
     test "it returns cookbooks" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       usersCookbook =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user_id: user.id
@@ -54,13 +55,13 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
   describe "#show" do
     test "it returns specific cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
 
       persianFood =
-        Repo.insert!(%Roots.Cookbook{
+        Repo.insert!(%Cookbook{
           title: "Persion Food",
           author: "Author Name",
           user: user
@@ -88,7 +89,7 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
   describe "#create" do
     test "it can create a cookbook" do
       user =
-        Repo.insert!(%Roots.User{
+        Repo.insert!(%User{
           name: "User",
           email: "user@roots.com"
         })
@@ -98,6 +99,10 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
         createCookbook(title: "New Cookbook", author: "User's Name", user_id: #{user.id}) {
           title
           author
+          user {
+            id
+            name
+          }
         }
       }
       """
@@ -109,6 +114,8 @@ defmodule RootsWeb.Integration.CookbookResolverTest do
       new_cookbook = json_response(res, 200)["data"]["createCookbook"]
       assert new_cookbook["title"] == "New Cookbook"
       assert new_cookbook["author"] == "User's Name"
+      assert new_cookbook["user"]["id"] == Integer.to_string(user.id)
+      assert new_cookbook["user"]["name"] == user.name
     end
   end
 end
