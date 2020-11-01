@@ -141,7 +141,7 @@ cholent = Repo.insert!(%Roots.Recipe{
     5. Rinse the eggs well and then tuck them into the meat. In a 4-cup container, whisk together the low sodium chicken broth, kosher salt, paprika, turmeric, cumin and cayenne.
     6. Pour the liquid over the cholent. Add additional water until all of the beans and pieces of meat are covered.
     7. Cover the slow cooker. Cook on low heat for 16 hours.
-    """
+    """,
    title: "Classic Family Cholent",
    author: "Jessye",
    cookbook_id: jessyes_cookbook.id
@@ -163,7 +163,7 @@ jahnun = Repo.insert!(%Roots.Recipe{
      10. Cover with tinfoil to help preserve moisture, seal the pot and bake overnight, for 10-12 hours — on the low setting of your slow cooker, or at 100 to 110 degrees Celsius (210 to 230 Fahrenheit) in your oven.
    """,
    title: "Yemenite Jachnun",
-   author: "Jessye",
+   author: "Naftali",
    cookbook_id: jessyes_cookbook.id
 })
 
