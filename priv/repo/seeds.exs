@@ -42,6 +42,32 @@ horacio = Repo.insert!(%Roots.User{
   email: "horacio@roots.com"
 })
 
+# Jessye's Family Members
+naftali = Repo.insert!(%Roots.User{
+  name: "Naftali",
+  email: "naftali@roots.com"
+})
+menachem = Repo.insert!(%Roots.User{
+  name: "Menachem",
+  email: "menachem@roots.com"
+})
+rukhl = Repo.insert!(%Roots.User{
+  name: "Rukhl",
+  email: "rukhl@roots.com"
+})
+lynne = Repo.insert!(%Roots.User{
+  name: "Lynne",
+  email: "lynne@roots.com"
+})
+jenna = Repo.insert!(%Roots.User{
+  name: "Jenna",
+  email: "jenna@roots.com"
+})
+gedaliah = Repo.insert!(%Roots.User{
+  name: "Gedaliah",
+  email: "gedaliah@roots.com"
+})
+
 # COOKBOOKS
 neerus_cookbook = Repo.insert!(%Roots.Cookbook{
   title: "Neeru's Cookbook",
@@ -64,7 +90,7 @@ michael_alexs_cookbook = Repo.insert!(%Roots.Cookbook{
   user_id: michaelAlex.id
 })
 jessyes_cookbook = Repo.insert!(%Roots.Cookbook{
-  title: "Jessye's Cookbook",
+  title: "Jewish Food",
   author: "Jessye",
   user_id: jessye.id
 })
@@ -84,6 +110,28 @@ horacios_cookbook = Repo.insert!(%Roots.Cookbook{
 beef_potato_stew = Repo.insert!(%Roots.Recipe{
    description: "A hearty beef anmd potato stew",
    instructions: "Cook in a crockpot",
+   title: "Campfire Stew",
+   author: "Michael Alex",
+   cookbook_id: michael_alexs_cookbook.id
+})
+baked_chicken = Repo.insert!(%Roots.Recipe{
+   description: "Lemon=garlic baked chicken cooked with potatoes",
+   instructions: "Bake at 375F",
+   title: "Greek Chicken and Potatoes",
+   author: "Michael Alex",
+   cookbook_id: michael_alexs_cookbook.id
+})
+french_dish = Repo.insert!(%Roots.Recipe{
+   description: "A classic French dish",
+   instructions: "Cook the beef and carrots in red wine",
+   title: "Beef Bourguinon",
+   author: "Michael Alex",
+   cookbook_id: michael_alexs_cookbook.id
+})
+
+cholent = Repo.insert!(%Roots.Recipe{
+   description: "A hearty beef anmd potato stew",
+   instructions: "Cook 12 hours in a crockpot",
    title: "Campfire Stew",
    author: "Michael Alex",
    cookbook_id: michael_alexs_cookbook.id
