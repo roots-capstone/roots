@@ -5,7 +5,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-<img src="./src/assets/roots-title-logo.jpg" alt="Logo for Roots" width="250px" height="250px">
+<img src="https://github.com/roots-capstone/roots-interface/blob/main/src/assets/roots-title-logo.jpg?raw=true" alt="Logo for Roots" width="250px" height="250px">
 
 ## Table of Contents
 
