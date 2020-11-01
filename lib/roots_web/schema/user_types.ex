@@ -21,6 +21,13 @@ defmodule RootsWeb.Schema.UserTypes do
 
       resolve(&Resolvers.UserResolver.cookbook_list/3)
     end
+
+    @desc "Get user by id"
+    field :get_user, type: :user do
+      arg(:id, non_null(:id))
+
+      resolve(&Resolvers.UserResolver.show/3)
+    end
   end
 
   object :user_mutations do
