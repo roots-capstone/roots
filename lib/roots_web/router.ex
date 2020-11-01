@@ -2,6 +2,7 @@ defmodule RootsWeb.Router do
   use Phoenix.Router
 
   pipeline :api do
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
