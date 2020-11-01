@@ -17,7 +17,7 @@ defmodule RootsWeb.UserResolverTest do
         Repo.insert!(%Roots.Cookbook{
           title: "Persion Food",
           author: "Author Name",
-          user: user
+          user: neeru
         })
 
       {:ok, found} = UserResolver.show(nil, %{id: neeru.id}, nil)
