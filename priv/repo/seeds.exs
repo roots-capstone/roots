@@ -359,7 +359,7 @@ oil = Repo.insert!(%Roots.Ingredient{
 })
 stale_pita = Repo.insert!(%Roots.Ingredient{
   name: "stale bread or pita to line the pot",
-  amount: 2,
+  amount: 2.0,
   unit: "pieces",
   recipe_id: jahnun.id
 })
