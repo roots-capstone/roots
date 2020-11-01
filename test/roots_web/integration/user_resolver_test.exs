@@ -40,15 +40,9 @@ defmodule RootsWeb.Integration.UserResolverTest do
 
   describe "#create" do
     test "it can create a user" do
-      user =
-        Repo.insert!(%Roots.User{
-          name: "User",
-          email: "user@roots.com"
-        })
-
       mutation = """
       {
-        createuser(name: "Neeru", email: "neeram@roots.com" {
+        createUser(name: "Neeru", email: "neeram@roots.com") {
           name
           email
         }
