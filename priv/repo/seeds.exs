@@ -130,8 +130,11 @@ french_dish = Repo.insert!(%Roots.Recipe{
 })
 
 cholent = Repo.insert!(%Roots.Recipe{
-   description: "Classic Ashkenazi Jewish cholent",
-   instructions: """1. In a large slow cooker (the larger the better!), place the potatoes in a single layer on the bottom of the cooking vessel.
+   description: """
+     Our family’s cholent recipe is a reflection of the heritage of my fiance’s parents; his mother was Sephardic, his father Ashkenazi. The dish uses the basic ingredients of an Ashkenazi cholent– meat, beans, potatoes, and sometimes barley or kasha– with added Sephardic spices for flavor. We also add whole eggs to the pot, another Sephardic custom. The eggs slowly cook in the broth, soaking up the flavor of the cholent and turning a lovely brown color. I sometimes use chickpeas, as is the custom in Moroccan dafina. Other times, I use a combination of kidney, pinto, and lima beans, which are more often used in Ashkenazi cholent
+   """,
+   instructions: """
+    1. In a large slow cooker (the larger the better!), place the potatoes in a single layer on the bottom of the cooking vessel.
     2. Sprinkle the onions over the potatoes.
     3. Place the beef in a single layer on top of the onions and potatoes. Place the two marrow bones in the meat.  Add the kishke to the cooker.
     4. Sprinkle the beans (raw or pre-soaked) and optional grains over the top of the meat. Place the three whole garlic cloves into the meat, evenly spaced. Sprinkle the whole mixture with the black pepper.
@@ -139,36 +142,28 @@ cholent = Repo.insert!(%Roots.Recipe{
     6. Pour the liquid over the cholent. Add additional water until all of the beans and pieces of meat are covered.
     7. Cover the slow cooker. Cook on low heat for 16 hours.
     """
-   title: "Cholent",
+   title: "Classic Family Cholent",
    author: "Jessye",
    cookbook_id: jessyes_cookbook.id
 })
-sabich = Repo.insert!(%Roots.Recipe{
-   description: "Lemon=garlic baked chicken cooked with potatoes",
-   instructions: "Bake at 375F",
-   title: "Greek Chicken and Potatoes",
-   author: "Naftali",
-   cookbook_id: jessyes_cookbook.id
-})
 jahnun = Repo.insert!(%Roots.Recipe{
-   description: "A classic French dish",
-   instructions: "Cook the beef and carrots in red wine",
-   title: "Beef Bourguinon",
-   author: "Michael Alex",
-   cookbook_id: jessyes_cookbook.id
-})
-sabich = Repo.insert!(%Roots.Recipe{
-   description: "Lemon=garlic baked chicken cooked with potatoes",
-   instructions: "Bake at 375F",
-   title: "Greek Chicken and Potatoes",
-   author: "Naftali",
-   cookbook_id: jessyes_cookbook.id
-})
-jahnun = Repo.insert!(%Roots.Recipe{
-   description: "A classic French dish",
-   instructions: "Cook the beef and carrots in red wine",
-   title: "Beef Bourguinon",
-   author: "Michael Alex",
+   description: """
+   Enjoy Shabbat with delicious, traditional Yemenite Jachnun, seen all over Israel in the “Shuk”,or open air market, and bakeries. Jachnun is a flaky, rolled pastry that is delicious served warm with condiments. Although it is fun to eat, we think that the real fun is in making it yourself! If you feel like getting your fingers sticky, then let’s get started. Remember this is the traditional way to make and serve Jachnun, so feel free to add different condiments or side dishes and make it unique to you!
+   """,
+   instructions: """
+     1. Mix the flour, date honey, baking powder, salt and water to form a dough. It will be sticky, and that’s OK. Knead and let sit for at least 10 minutes.
+     2. Divide into six balls. They’ll be about the size of tennis balls.
+     3. Oil your work surface. Using your hands and/or a rolling pin, roll out the dough into a 40-by-40 centimeter (16 inch) square. Oil it as needed. The dough should be very thin. If it tears, try to push it back together, but it doesn’t really matter — once it’s folded, the imperfections won’t be noticeable.
+     4. Rub liberally with olive oil (or softened margarine or butter — about 1-2 teaspoons oil, 2 teaspoons butter or 1 tablespoon margarine); sprinkle lightly with yeast (if using). Fold over into thirds. You now should have a long, narrow strip. Brush oil on the top layer. Roll out again in both directions. Your strip should now be wider and longer. The width of the strip will be the length of your finished jachnun.
+     5. Start rolling up the strip. Pull the dough as you go, to stretch it out even more.
+     6. Arrange a thin layer of stale bread on the bottom of your baking dish or slow cooker. The bread pads the jachnun and absorbs excess oil. The traditional jachnun pan is a cylindrical metal tub with a tight-sealing top, but you can use any oven-safe dish with a tight lid.
+     7. Cut strips of baking paper slightly larger than each jachnun. Rest each roll on its strip of paper — this isn’t necessary, but it will keep them from sticking to each other and falling apart when you remove them from the pan.
+     8. Arrange the paper-coated jachnuns in the dish. They should be packed relatively tightly.
+     9. Arrange a few clean eggs in with the jachnun. They’ll come out hard-boiled.
+     10. Cover with tinfoil to help preserve moisture, seal the pot and bake overnight, for 10-12 hours — on the low setting of your slow cooker, or at 100 to 110 degrees Celsius (210 to 230 Fahrenheit) in your oven.
+   """,
+   title: "Yemenite Jachnun",
+   author: "Jessye",
    cookbook_id: jessyes_cookbook.id
 })
 
@@ -295,7 +290,7 @@ chicken = Repo.insert!(%Roots.Ingredient{
   unit: "lbs",
   recipe_id: baked_chicken.id
 })
-potato = Repo.insert!(%Roots.Ingredient{
+potato_2 = Repo.insert!(%Roots.Ingredient{
   name: "potato",
   amount: 3.0,
   unit: "lbs",
@@ -307,19 +302,19 @@ lemon = Repo.insert!(%Roots.Ingredient{
   unit: "whole lemon",
   recipe_id: baked_chicken.id
 })
-garlic = Repo.insert!(%Roots.Ingredient{
+garlic_2 = Repo.insert!(%Roots.Ingredient{
   name: "garlic",
   amount: 3.0,
   unit: "cloves",
   recipe_id: baked_chicken.id
 })
-beef = Repo.insert!(%Roots.Ingredient{
+beef_2 = Repo.insert!(%Roots.Ingredient{
   name: "beef",
   amount: 2.0,
   unit: "lbs",
   recipe_id: french_dish.id
 })
-potato = Repo.insert!(%Roots.Ingredient{
+potato_3 = Repo.insert!(%Roots.Ingredient{
   name: "potato",
   amount: 3.0,
   unit: "lbs",
@@ -330,4 +325,41 @@ red_wine = Repo.insert!(%Roots.Ingredient{
   amount: 7.0,
   unit: "oz",
   recipe_id: french_dish.id
+})
+
+flour = Repo.insert!(%Roots.Ingredient{
+  name: "whole wheat flour (alternative: white flour)",
+  amount: 3.25,
+  unit: "cups",
+  recipe_id: jahnun.id
+})
+silan = Repo.insert!(%Roots.Ingredient{
+  name: "date honey a.k.a. silan (alternative: sugar)",
+  amount: 0.25,
+  unit: "cups",
+  recipe_id: jahnun.id
+})
+baking_powder = Repo.insert!(%Roots.Ingredient{
+  name: "baking powder",
+  amount: 0.5,
+  unit: "tsp",
+  recipe_id: jahnun.id
+})
+water_2 = Repo.insert!(%Roots.Ingredient{
+  name: "cup water, or enough to give you a springy dough",
+  amount: 1.25,
+  unit: "cups",
+  recipe_id: jahnun.id
+})
+oil = Repo.insert!(%Roots.Ingredient{
+  name: "oil, or more if needed (alternative: about 100 grams margarine or butter)",
+  amount: 1.25,
+  unit: "cups",
+  recipe_id: jahnun.id
+})
+stale_pita = Repo.insert!(%Roots.Ingredient{
+  name: "stale bread or pita to line the pot",
+  amount: 2,
+  unit: "pieces",
+  recipe_id: jahnun.id
 })
