@@ -5,6 +5,13 @@ defmodule RootsWeb.Schema.RecipeTypes do
 
   alias RootsWeb.{Data, Resolvers}
 
+  @desc "Ingredient for recipe"
+  input_object :recipe_ingredient do
+    field :amount, :float
+    field :name, :string
+    field :unit, :string
+  end
+
   @desc "Recipe"
   object :recipe do
     field :id, :id
@@ -25,8 +32,7 @@ defmodule RootsWeb.Schema.RecipeTypes do
       arg(:title, non_null(:string))
       arg(:author, non_null(:string))
       arg(:cookbook_id, non_null(:id))
-      arg(:ingredients, non_null(:list))
-    # field :create_ingredient, type: ingredient do
+      arg(:recipe_ingredient, non_null(:recipe_ingredient))
 
       resolve &Resolvers.RecipeResolver.create_recipe/3
     end
