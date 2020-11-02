@@ -25,6 +25,8 @@ defmodule RootsWeb.Schema.RecipeTypes do
       arg(:title, non_null(:string))
       arg(:author, non_null(:string))
       arg(:cookbook_id, non_null(:id))
+      arg(:ingredients, non_null(:list))
+    # field :create_ingredient, type: ingredient do
 
       resolve &Resolvers.RecipeResolver.create_recipe/3
     end
@@ -40,7 +42,7 @@ defmodule RootsWeb.Schema.RecipeTypes do
     @desc "Get specific recipe"
     field :get_recipe, :recipe do
       arg(:id, non_null(:id))
-      
+
       resolve(&Resolvers.RecipeResolver.show/3)
     end
   end

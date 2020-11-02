@@ -1,9 +1,11 @@
 defmodule RootsWeb.Resolvers.RecipeResolver do
   alias Roots.Recipe
+  require IEx
 
   def create_recipe(_parent, args, _resolution) do
 
     args
+    IEx.pry
     |> Recipe.create()
     |> case do
       {:ok, recipe} ->

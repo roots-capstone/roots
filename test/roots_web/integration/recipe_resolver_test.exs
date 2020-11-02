@@ -162,4 +162,59 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
       assert recipe_found["cookbook"]["user"]["id"] == to_string(user.id)
     end
   end
+
+  describe "create recipe and ingredients in conjunction" do
+    test "it can create a recipe with ingredients" do
+      user =
+        Repo.insert!(%User{
+          name: "User",
+          email: "user@roots.com"
+        })
+      usersCookbook =
+        Repo.insert!(%Cookbook{
+          title: "User's Cookbook",
+          author: "Author Name",
+          user_id: user.id
+        })
+
+      mutation = """
+      {
+        createRecipe(
+          title: "New recipe",
+          author: "Authors name",
+          description: "Description of recipe",
+          instructions: "Instructions of a recipe",
+          cookbook_id: #{usersCookbook.id}),
+          ingredients: [
+            {name: "rice", amount: 2, unit: "cups"},
+            {name: "chicken", amount: 2, unit: "lbs"},
+            {name: "brocoli", amount: 1, unit: "lbs"},
+            {name: "salt", amount: 2, unit: "table spoon"}]
+          )
+        title
+      }
+      """
+
+      res =
+        build_conn()
+        |> post("/graphql", AbsintheHelpers.mutation_skeleton(mutation))
+
+      recipe = json_response(res, 200)["data"]["createRecipe"]
+    end
+  end
 end
+
+
+# res =
+#   build_conn()
+#   |> post("/graphql", AbsintheHelpers.mutation_skeleton(mutation))
+#
+# new_recipe = json_response(res, 200)["data"]["createRecipe"]
+# assert new_recipe["title"] == "New Recipe"
+# assert new_recipe["author"] == "User Name"
+# assert new_recipe["description"] == "This and that"
+# assert new_recipe["instructions"] == "Step 1 and step 2"
+# assert new_recipe["cookbook"]["id"] == Integer.to_string(usersCookbook.id)
+# assert new_recipe["cookbook"]["title"] == usersCookbook.title
+# assert new_recipe["cookbook"]["author"] == usersCookbook.author
+# end
