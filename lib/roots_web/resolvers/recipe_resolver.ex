@@ -1,6 +1,5 @@
 defmodule RootsWeb.Resolvers.RecipeResolver do
   alias Roots.Recipe
-  require IEx
 
   def create_recipe(_parent, args, _resolution) do
 

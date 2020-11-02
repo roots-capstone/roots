@@ -3,13 +3,13 @@ defmodule Roots.Recipe do
 
   alias Roots.{Repo, Recipe}
 
-
   schema "recipes" do
     field :description, :string
     field :instructions, :string
     field :title, :string
     field :author, :string
-    has_many :ingredients, Roots.Ingredient
+    field :ingredients, {:array, :input_object}
+    # has_many :ingredients, Roots.Ingredient
     belongs_to :cookbook, Roots.Cookbook
 
     timestamps()
@@ -22,6 +22,7 @@ defmodule Roots.Recipe do
   @doc false
   def changeset(recipe, attrs) do
     recipe
+    require IEx; IEx.pry
     |> cast(attrs, [:title, :description, :instructions, :author, :cookbook_id])
     |> validate_required([:title, :description, :instructions, :author, :cookbook_id])
     |> foreign_key_constraint(:cookbook_id)
