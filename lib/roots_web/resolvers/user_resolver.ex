@@ -1,5 +1,5 @@
 defmodule RootsWeb.Resolvers.UserResolver do
-  alias Roots.{Repo, Cookbook, User}
+  alias Roots.{Repo, Cookbook, User, Recipe, Ingredient}
 
   def create_user(_parent, args, _resolution) do
     args
@@ -18,6 +18,6 @@ defmodule RootsWeb.Resolvers.UserResolver do
   end
 
   def show(_parent, args, _resolution) do
-    {:ok, User.find(args.id)}
+    {:ok, User.get_user(args.id)}
   end
 end

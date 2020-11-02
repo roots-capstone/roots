@@ -1,7 +1,7 @@
 defmodule Roots.User do
   use Roots.Model
 
-  alias Roots.{Repo, User, Cookbook, Recipe}
+  alias Roots.{Repo, User, Cookbook, Recipe, Ingredient}
 
   schema "users" do
     field :email, :string
