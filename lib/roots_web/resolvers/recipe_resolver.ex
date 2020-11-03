@@ -1,17 +1,16 @@
 defmodule RootsWeb.Resolvers.RecipeResolver do
-  alias Roots.Recipe
+  alias Roots.{Repo, Recipe, Ingredient}
+  alias Ecto.Multi
 
   def create_recipe(_parent, args, _resolution) do
-
-    args
-    # IEx.pry
-    |> Recipe.create()
-    |> case do
-      {:ok, recipe} ->
-        {:ok, recipe}
-        _error ->
-        {:error, "Could not create recipe"}
-    end
+    Multi.new()
+    |> Multi.insert(:recipe, Recipe.create(args))
+    |> Multi.merge(fn %{recipe: recipe} ->
+      # That is the inserted user from the first part of the multi
+      Multi.new()
+      |> Multi.insert_all(:ingredients, Ingredient.create_all_ingredients(recipe))
+    end)
+    |> Repo.transaction()
   end
 
   def list(_parent, _args, _resolutions) do

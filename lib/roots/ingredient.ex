@@ -3,7 +3,6 @@ defmodule Roots.Ingredient do
 
   alias Roots.{Repo, Recipe}
 
-
   schema "ingredients" do
     field :name, :string
     field :amount, :float
@@ -15,6 +14,12 @@ defmodule Roots.Ingredient do
 
   def all do
     Repo.all(from row in __MODULE__, order_by: [desc: row.id])
+  end
+
+  def create_all_ingredients(args) do
+    args
+    |> changeset()
+    |> Repo.insert()
   end
 
   @doc false
