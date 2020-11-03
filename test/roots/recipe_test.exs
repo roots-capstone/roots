@@ -24,7 +24,7 @@ defmodule Roots.RecipeTest do
         author: "User Name",
         description: "Recipe description",
         instructions: "Recipe instructions",
-        # recipeIngredients: [{amount: 3.0, name: "fish", unit: "whole fish"}, {amount: 0.1, name: "salt", unit: "a pinch"}],
+        recipeIngredients: ["item1", "item2"],
         cookbook_id: usersCookbook.id
       }
 

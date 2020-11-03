@@ -26,6 +26,10 @@ defmodule RootsWeb.Integration.RecipeResolverTest do
           author: "User Name",
           description: "This and that",
           instructions: "Step 1 and step 2",
+          recipeIngredients: [
+            {amount: 1.0, name: "fish", unit: "a whole fish", recipe_id: 2}
+            {amount: 10.0, name: "a fish", unit: "half fish", recipe_id: 2}
+          ],
           cookbook_id: #{usersCookbook.id}) {
             title
             author
