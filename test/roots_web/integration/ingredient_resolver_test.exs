@@ -4,7 +4,6 @@ defmodule RootsWeb.Integration.IngredientResolverTest do
   alias Roots.{Repo, User, Cookbook, Recipe}
   require IEx
 
-
   describe "#create" do
     test "it can create a new ingredient" do
       user =
@@ -12,12 +11,14 @@ defmodule RootsWeb.Integration.IngredientResolverTest do
           name: "User",
           email: "user@roots.com"
         })
+
       usersCookbook =
         Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
+
       recipe =
         Repo.insert!(%Recipe{
           title: "Chicken Salad",
@@ -25,13 +26,13 @@ defmodule RootsWeb.Integration.IngredientResolverTest do
           instructions: "step 1, step 2",
           author: "Authors Name",
           cookbook_id: usersCookbook.id
-      })
+        })
 
       mutation = """
       {
         createIngredient(
           name: "New ingredient",
-          amount: 4,
+          amount: "4",
           unit: "oz",
           recipe_id: #{recipe.id}) {
             name
@@ -64,7 +65,7 @@ defmodule RootsWeb.Integration.IngredientResolverTest do
 
       new_ingredient = json_response(res, 200)["data"]["createIngredient"]
       assert new_ingredient["name"] == "New ingredient"
-      assert new_ingredient["amount"] == 4
+      assert new_ingredient["amount"] == "4"
       assert new_ingredient["unit"] == "oz"
       assert new_ingredient["recipe"]["id"] == Integer.to_string(recipe.id)
       assert new_ingredient["recipe"]["title"] == "Chicken Salad"

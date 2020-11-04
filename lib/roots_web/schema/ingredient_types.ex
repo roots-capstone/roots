@@ -8,7 +8,7 @@ defmodule RootsWeb.Schema.IngredientTypes do
   @desc "Ingredient"
   object :ingredient do
     field :id, :id
-    field :amount, :float
+    field :amount, :string
     field :name, :string
     field :unit, :string
 
@@ -18,7 +18,7 @@ defmodule RootsWeb.Schema.IngredientTypes do
   object :ingredient_mutations do
     @desc "Create Ingredient"
     field :create_ingredient, type: :ingredient do
-      arg(:amount, non_null(:float))
+      arg(:amount, non_null(:string))
       arg(:name, non_null(:string))
       arg(:unit, non_null(:string))
       arg(:recipe_id, non_null(:id))

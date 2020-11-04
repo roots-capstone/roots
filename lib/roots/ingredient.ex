@@ -3,10 +3,9 @@ defmodule Roots.Ingredient do
 
   alias Roots.{Repo, Recipe}
 
-
   schema "ingredients" do
     field :name, :string
-    field :amount, :float
+    field :amount, :string
     field :unit, :string
     belongs_to :recipe, Recipe
 
