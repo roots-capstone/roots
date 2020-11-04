@@ -5,7 +5,6 @@ defmodule Roots.IngredientTest do
   alias Roots.Ingredient
   alias Roots.{Repo, User, Cookbook, Recipe, Ingredient}
 
-
   describe "#create" do
     test "it can create a new ingredient" do
       user =
@@ -13,12 +12,14 @@ defmodule Roots.IngredientTest do
           name: "User",
           email: "user@roots.com"
         })
+
       usersCookbook =
         Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
+
       recipe =
         Repo.insert!(%Recipe{
           title: "User's Recipe",
@@ -27,9 +28,10 @@ defmodule Roots.IngredientTest do
           instructions: "Recipe instructions",
           cookbook_id: usersCookbook.id
         })
+
       valid_attrs = %{
         name: "Ingredient Name",
-        amount: 20.0,
+        amount: "20.0",
         unit: "Ingredient unit",
         recipe_id: recipe.id
       }
@@ -49,33 +51,37 @@ defmodule Roots.IngredientTest do
           name: "User",
           email: "user@roots.com"
         })
+
       usersCookbook =
         Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
+
       recipe =
         Repo.insert!(%Recipe{
-           description: "A hearty beef anmd potato stew",
-           instructions: "Cook in a crockpot",
-           title: "Campfire Stew",
-           author: "User Name",
-           cookbook_id: usersCookbook.id
+          description: "A hearty beef anmd potato stew",
+          instructions: "Cook in a crockpot",
+          title: "Campfire Stew",
+          author: "User Name",
+          cookbook_id: usersCookbook.id
         })
+
       ingredient1 =
         Repo.insert!(%Ingredient{
-           name: "Ingredient name",
-           amount: 2.0,
-           unit: "oz",
-           recipe_id: recipe.id
+          name: "Ingredient name",
+          amount: "2.0",
+          unit: "oz",
+          recipe_id: recipe.id
         })
+
       ingredient2 =
         Repo.insert!(%Ingredient{
-           name: "Ingredient name",
-           amount: 2.0,
-           unit: "oz",
-           recipe_id: recipe.id
+          name: "Ingredient name",
+          amount: "2.0",
+          unit: "oz",
+          recipe_id: recipe.id
         })
 
       results = Ingredient.all()
@@ -92,26 +98,29 @@ defmodule Roots.IngredientTest do
           name: "User",
           email: "user@roots.com"
         })
+
       usersCookbook =
         Repo.insert!(%Cookbook{
           title: "User's Cookbook",
           author: "Author Name",
           user_id: user.id
         })
+
       recipe =
         Repo.insert!(%Recipe{
-           description: "A hearty beef anmd potato stew",
-           instructions: "Cook in a crockpot",
-           title: "Campfire Stew",
-           author: "User Name",
-           cookbook_id: usersCookbook.id
+          description: "A hearty beef anmd potato stew",
+          instructions: "Cook in a crockpot",
+          title: "Campfire Stew",
+          author: "User Name",
+          cookbook_id: usersCookbook.id
         })
+
       ingredient =
         Repo.insert!(%Ingredient{
-           name: "Ingredient name",
-           amount: 2.0,
-           unit: "oz",
-           recipe_id: recipe.id
+          name: "Ingredient name",
+          amount: "2.0",
+          unit: "oz",
+          recipe_id: recipe.id
         })
 
       ingredient_found = Ingredient.find(ingredient.id)
